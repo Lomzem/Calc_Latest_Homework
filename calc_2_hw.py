@@ -25,10 +25,7 @@ def find_latest_date(dates: list[datetime.date], target: datetime.date) -> int:
             r = m - 1
 
 with open('./course-data.js') as f:
-    # assignments = json.load(f)['assignments']
-    assignments = json.load(f)
-    test = json.dumps(assignments, indent=4)
-    print(test)
+    assignments = json.load(f)['assignments']
     assignments = [ass for ass in assignments if ass['title'].startswith('Homework')]
     assignments = sorted(assignments, key=lambda x: x['dueAt'])
 
