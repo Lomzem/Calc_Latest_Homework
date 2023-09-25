@@ -1,5 +1,6 @@
-C:\Users\Lomzem\coding\calc_2_hw\rust\calc_2_hw\target\debug\deps\calc_2_hw.exe: src\main.rs
+C:\Users\Lomzem\coding\calc_2_hw\calc_2_hw_rust\target\debug\deps\calc_2_hw.exe: src\main.rs src\content_parser.rs
 
-C:\Users\Lomzem\coding\calc_2_hw\rust\calc_2_hw\target\debug\deps\calc_2_hw.d: src\main.rs
+C:\Users\Lomzem\coding\calc_2_hw\calc_2_hw_rust\target\debug\deps\calc_2_hw.d: src\main.rs src\content_parser.rs
 
 src\main.rs:
+src\content_parser.rs:

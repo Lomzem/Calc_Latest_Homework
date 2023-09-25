@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, env};
 use chrono::{DateTime, Local};
 use serde::{Serialize, Deserialize};
 mod content_parser;
@@ -47,8 +47,15 @@ fn find_nearest_due_date(due_dates: Vec<DateTime<Local>>, target: DateTime<Local
 }
 
 fn main() {
+    env::set_current_dir(env::current_exe().unwrap().parent().unwrap()).expect("Weird path");
     const COURSE_DATA_PATH: &str = "./course-data.js";
-    let file_contents = fs::read_to_string(COURSE_DATA_PATH).expect("Failed to read course file");
+    let file_contents = match fs::read_to_string(COURSE_DATA_PATH) {
+        Ok(contents) => contents,
+        Err(err) => {
+            println!("Current Path: {:?}", std::env::current_dir().unwrap());
+            panic!("Can't find course-data.js");
+        }
+    };
     let course_data: CourseData = serde_json::from_str(&file_contents).expect("Failed to parse JSON");
     let assignments = course_data.assignments;
     let mut hw_assignments: Vec<Assignment> = assignments
